@@ -8,11 +8,11 @@ namespace GlidepathTestProgram
 {
     public class ReadWriteFunctions
     {  
-        public static void Wrtie(int number)
+        public static void Wrtie(string writeToFile)
         {
             using (StreamWriter writer = new StreamWriter("Wfile.txt", true))
             {
-                writer.WriteLine(number);
+                writer.WriteLine(writeToFile);
             }
         }
 
