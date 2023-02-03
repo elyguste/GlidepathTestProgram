@@ -7,20 +7,35 @@ using System.Text;
 namespace GlidepathTestProgram
 {
     public class ReadWriteFunctions
-    {  
+    {
         public static void Wrtie(string writeToFile)
         {
-            using (StreamWriter writer = new StreamWriter("Wfile.txt", true))
+            try
             {
-                writer.WriteLine(writeToFile);
+                using (StreamWriter writer = new StreamWriter("Wfile.txt", true))
+                {
+                    writer.WriteLine(writeToFile);
+                }
+            }
+            catch (Exception e)
+            {
             }
         }
 
         public static string Read()
         {
-            String lastRow = File.ReadLines("Wfile.txt").Last();
-            return lastRow;
+            String lastRow = string.Empty;
+            try
+            {
+                lastRow = File.ReadLines("Wfile.txt").Last();
 
+            }
+            catch (Exception e)
+            {
+                return "|";
+            }
+
+            return lastRow;
         }
     }
 }

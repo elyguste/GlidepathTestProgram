@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace GlidepathTestProgram
@@ -7,17 +8,20 @@ namespace GlidepathTestProgram
     class Program
     {
         // Main entry
-        
+
         public static void Main(string[] args)
         {
-            ReadWriteFunctions rwFunction = new ReadWriteFunctions();
+            //calling of input function
             int inputNumber = UserInput();
 
+            //calling readline function
             string last = ReadWriteFunctions.Read();
 
-            DataLogic(last, inputNumber);
+            //computation logic and writing on the textfile
+            ComputationLogic.DataLogic(last, inputNumber);
         }
 
+        //input function
         public static int UserInput()
         {
             Console.Write("Please enter number: ");
@@ -27,6 +31,7 @@ namespace GlidepathTestProgram
             return number;
         }
 
+        //checking of user input
         public static string CheckUserInput()
         {
             string input = Console.ReadLine();
@@ -38,11 +43,6 @@ namespace GlidepathTestProgram
             }
             else
                 return input;
-        }
-
-        public static void DataLogic(string previousValue, int userInput)
-        {
-            string LastValue = previousValue.Split('|').Last();
         }
     }
 }
